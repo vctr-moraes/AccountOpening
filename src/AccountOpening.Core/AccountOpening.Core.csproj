@@ -7,13 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Application\Common\" />
     <Folder Include="Application\DTOs\Response\" />
     <Folder Include="Application\DTOs\Request\" />
     <Folder Include="Application\UseCases\" />
     <Folder Include="Application\Ports\DrivingPorts\" />
     <Folder Include="Application\Ports\DrivenPorts\" />
-    <Folder Include="Domain\Entities\" />
     <Folder Include="Domain\Events\" />
     <Folder Include="Domain\Exceptions\" />
     <Folder Include="Domain\Interfaces\" />
