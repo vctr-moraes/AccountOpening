@@ -14,5 +14,20 @@ namespace AccountOpening.Core.Domain.Entities
 
         private readonly IEnumerable<Address> _addresses;
         public IReadOnlyCollection<Address> Addresses => _addresses.ToList().AsReadOnly();
+
+        internal Client(string name, DateTime dateOfBirth, string document)
+        {
+            Name = name;
+            DateOfBirth = dateOfBirth;
+            Document = document;
+            IsActive = false;
+            _accounts = new List<Account>();
+            _addresses = new List<Address>();
+        }
+
+        internal void AssociateAccount(Account account)
+        {
+            _accounts.Append(account);
+        }
     }
 }

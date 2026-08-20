@@ -2,7 +2,8 @@
 {
     internal enum AccountStatus
     {
-        Active,
-        Inactive
+        OpeningRequested = 1,
+        Open = 2,
+        Closed = 3
     }
 }
