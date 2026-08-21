@@ -15,6 +15,8 @@ namespace AccountOpening.Core.Domain.Entities
         private readonly IEnumerable<Address> _addresses;
         public IReadOnlyCollection<Address> Addresses => _addresses.ToList().AsReadOnly();
 
+        internal Client() { }
+
         internal Client(string name, DateTime dateOfBirth, string document)
         {
             Name = name;
