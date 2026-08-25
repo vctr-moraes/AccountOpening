@@ -1,6 +1,6 @@
 ﻿namespace AccountOpening.Core.Application.DTOs.Request
 {
-    internal record OpenAccountRequestDto
+    public sealed record OpenAccountRequestDto : Dto
     {
         public required Guid ClientId { get; init; }
     }

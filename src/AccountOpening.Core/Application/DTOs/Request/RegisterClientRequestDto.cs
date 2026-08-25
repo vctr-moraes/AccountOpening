@@ -1,6 +1,6 @@
 ﻿namespace AccountOpening.Core.Application.DTOs.Request
 {
-    internal record RegisterClientRequestDto
+    public sealed record RegisterClientRequestDto : Dto
     {
         public required string Name { get; init; }
         public required DateTime DateOfBirth { get; init; }
