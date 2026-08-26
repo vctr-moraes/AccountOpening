@@ -1,6 +1,6 @@
 ﻿namespace AccountOpening.Core.Domain.Enums
 {
-    internal enum AccountStatus
+    public enum AccountStatus
     {
         OpeningRequested = 1,
         Open = 2,

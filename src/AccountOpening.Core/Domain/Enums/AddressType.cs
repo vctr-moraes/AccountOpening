@@ -1,6 +1,6 @@
 ﻿namespace AccountOpening.Core.Domain.Enums
 {
-    internal enum AddressType
+    public enum AddressType
     {
         Home,
         Work

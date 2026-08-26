@@ -1,6 +1,6 @@
 ﻿namespace AccountOpening.Core.Domain.Enums
 {
-    internal enum AccountType
+    public enum AccountType
     {
         Checking,
         Savings

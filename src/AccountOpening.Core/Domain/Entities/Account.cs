@@ -3,7 +3,7 @@ using AccountOpening.Core.Domain.Enums;
 
 namespace AccountOpening.Core.Domain.Entities
 {
-    internal class Account : Entity
+    public class Account : Entity
     {
         public AccountType AccountType { get; private set; }
         public AccountStatus AccountStatus { get; private set; }

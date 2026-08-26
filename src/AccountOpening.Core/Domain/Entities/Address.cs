@@ -3,7 +3,7 @@ using AccountOpening.Core.Domain.Enums;
 
 namespace AccountOpening.Core.Domain.Entities
 {
-    internal class Address : Entity
+    public class Address : Entity
     {
         public string Street { get; private set; }
         public string City { get; private set; }

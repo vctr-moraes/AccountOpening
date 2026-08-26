@@ -2,7 +2,7 @@
 
 namespace AccountOpening.Core.Domain.Entities
 {
-    internal class Client : Entity, IAggregateRoot
+    public class Client : Entity, IAggregateRoot
     {
         public string Name { get; private set; }
         public DateTime DateOfBirth { get; private set; }
