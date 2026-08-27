@@ -11,7 +11,6 @@
     <Folder Include="Application\Ports\DrivenPorts\" />
     <Folder Include="Domain\Events\" />
     <Folder Include="Domain\Exceptions\" />
-    <Folder Include="Domain\Interfaces\" />
     <Folder Include="Domain\Services\" />
     <Folder Include="Domain\ValueObjects\" />
   </ItemGroup>

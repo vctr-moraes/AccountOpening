@@ -1,4 +1,4 @@
 ﻿namespace AccountOpening.Core.Domain.Common
 {
-    internal interface IAggregateRoot { }
+    public interface IAggregateRoot { }
 }
