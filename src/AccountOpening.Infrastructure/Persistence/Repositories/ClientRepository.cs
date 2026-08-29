@@ -1,11 +1,12 @@
-﻿using AccountOpening.Core.Domain.Entities;
+﻿using AccountOpening.Core.Domain.Common;
+using AccountOpening.Core.Domain.Entities;
 using AccountOpening.Core.Domain.Interfaces.Repositories;
 using AccountOpening.Infrastructure.Persistence.Data;
 using Microsoft.EntityFrameworkCore;
 
 namespace AccountOpening.Infrastructure.Persistence.Repositories
 {
-    internal class ClientRepository : IClientRepository
+    internal sealed class ClientRepository : IClientRepository
     {
         private readonly AccountOpeningDbContext _context;
 
@@ -14,7 +15,7 @@ namespace AccountOpening.Infrastructure.Persistence.Repositories
             _context = context;
         }
 
-        public async Task<Client> GetById(Guid id)
+        public async Task<Client?> GetById(Guid id)
         {
             return await _context.Clients
                 .AsNoTracking()
@@ -50,6 +51,11 @@ namespace AccountOpening.Infrastructure.Persistence.Repositories
         public void AddAccount(Account account)
         {
             _context.Accounts.Add(account);
+        }
+
+        public void AddAddress(Address address)
+        {
+            _context.Addresses.Add(address);
         }
 
         public void Dispose()

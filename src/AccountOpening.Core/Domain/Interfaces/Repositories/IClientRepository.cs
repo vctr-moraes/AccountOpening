@@ -4,7 +4,7 @@ namespace AccountOpening.Core.Domain.Interfaces.Repositories
 {
     public interface IClientRepository : IRepository<Client>
     {
-        Task<Client> GetById(Guid id);
+        Task<Client?> GetById(Guid id);
         Task<IEnumerable<Client>> GetAll();
         void Add(Client client);
         void Update(Client client);
