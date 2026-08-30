@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace AccountOpening.Infrastructure.Persistence.Repositories
 {
-    internal sealed class ClientRepository : IClientRepository
+    public sealed class ClientRepository : IClientRepository
     {
         private readonly AccountOpeningDbContext _context;
 

@@ -13,6 +13,8 @@ namespace AccountOpening.Core.Domain.Entities
         public Client Client { get; private set; }
         public Guid ClientId { get; private set; }
 
+        public Account() { }
+
         internal Account(Client client, Guid clientId)
         {
             AccountType = AccountType.Checking;
