@@ -1,5 +1,4 @@
-﻿using AccountOpening.Core.Domain.Common;
-using AccountOpening.Core.Domain.Entities;
+﻿using AccountOpening.Core.Domain.Entities;
 using AccountOpening.Core.Domain.Interfaces.Repositories;
 using AccountOpening.Infrastructure.Persistence.Data;
 using Microsoft.EntityFrameworkCore;
@@ -36,6 +35,7 @@ namespace AccountOpening.Infrastructure.Persistence.Repositories
         public void Add(Client client)
         {
             _context.Clients.Add(client);
+            _context.SaveChanges();
         }
 
         public void Update(Client client)

@@ -7,7 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Application\DTOs\Response\" />
     <Folder Include="Application\Ports\DrivenPorts\" />
     <Folder Include="Domain\Events\" />
     <Folder Include="Domain\Exceptions\" />

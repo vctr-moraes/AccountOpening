@@ -1,19 +1,24 @@
 ﻿using AccountOpening.Core.Application.DTOs.Request;
+using AccountOpening.Core.Application.DTOs.Response;
 using AccountOpening.Core.Application.Ports.DrivingPorts;
 using AccountOpening.Core.Domain.Entities;
+using AccountOpening.Core.Domain.Interfaces.Repositories;
 
 namespace AccountOpening.Core.Application.UseCases
 {
-    internal class RegisteringClientUseCase : IRegisteringClientUseCase
+    public sealed class RegisteringClientUseCase(IClientRepository clientRepository) :
+        UseCase<RegisterClientRequestDto, RegisterClientResponseDto>
     {
-        public async Task RegisterClient(RegisterClientRequestDto registerClientRequest)
+        protected override async Task<RegisterClientResponseDto> ExecuteAsync(RegisterClientRequestDto registerClientRequest)
         {
             var client = new Client(
                 registerClientRequest.Name,
                 registerClientRequest.DateOfBirth,
                 registerClientRequest.Document);
 
-            // Call repository to save the client.
+            clientRepository.Add(client);
+
+            return new RegisterClientResponseDto();
         }
     }
 }
