@@ -15,6 +15,7 @@ builder.Services.AddDbContext<AccountOpeningDbContext>(options =>
 builder.Services.AddScoped<AccountOpeningDbContext>();
 builder.Services.AddScoped<IClientRepository, ClientRepository>(); 
 builder.Services.AddScoped<IUseCase<RegisterClientRequestDto, RegisterClientResponseDto>, RegisteringClientUseCase>();
+builder.Services.AddScoped<IUseCase<GetClientByIdRequestDto, GetClientByIdResponseDto>, GetClientByIdUseCase>();
 
 // Add services to the container.
 

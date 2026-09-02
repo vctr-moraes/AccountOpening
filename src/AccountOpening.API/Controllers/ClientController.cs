@@ -10,8 +10,8 @@ namespace AccountOpening.API.Controllers
     public class ClientController : ControllerBase
     {
         [HttpPost]
-        [ProducesResponseTypeAttribute(200)]
-        [ProducesResponseTypeAttribute(400)]
+        [ProducesResponseType(200)]
+        [ProducesResponseType(400)]
         public async Task<IActionResult> RegisterClientAsync(
             [FromServices] IUseCase<RegisterClientRequestDto, RegisterClientResponseDto> registeringClientUseCase,
             [FromBody] RegisterClientRequestDto registerClientRequest)
@@ -19,6 +19,26 @@ namespace AccountOpening.API.Controllers
             try
             {
                 var response = await registeringClientUseCase.TryExecuteAsync(registerClientRequest);
+                return Ok(response);
+            }
+            catch
+            {
+                return BadRequest();
+            }
+        }
+    
+        [HttpGet("{clientId:guid}")]
+        [ProducesResponseType(200)]
+        [ProducesResponseType(400)]
+        public async Task<IActionResult> GetClientByIdAsync(
+            [FromServices] IUseCase<GetClientByIdRequestDto, GetClientByIdResponseDto> getClientByIdUseCase,
+            [FromRoute] Guid clientId)
+        {
+            try
+            {
+                var request = new GetClientByIdRequestDto { ClientId = clientId };
+                var response = await getClientByIdUseCase.TryExecuteAsync(request);
+            
                 return Ok(response);
             }
             catch
