@@ -46,5 +46,22 @@ namespace AccountOpening.API.Controllers
                 return BadRequest();
             }
         }
+
+        [HttpGet]
+        [ProducesResponseType(200)]
+        [ProducesResponseType(400)]
+        public async Task<IActionResult> GetClients(
+            [FromServices] IUseCase<GetClientsRequestDto, GetClientsResponseDto> getClientsUseCase)
+        {
+            try
+            {
+                var response = await getClientsUseCase.TryExecuteAsync(new GetClientsRequestDto());
+                return Ok(response);
+            }
+            catch
+            {
+                return BadRequest();
+            }
+        }
     }
 }

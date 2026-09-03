@@ -1,6 +1,5 @@
 ﻿using AccountOpening.Core.Application.DTOs.Request;
 using AccountOpening.Core.Application.DTOs.Response;
-using AccountOpening.Core.Application.Ports.DrivingPorts;
 using AccountOpening.Core.Domain.Entities;
 using AccountOpening.Core.Domain.Interfaces.Repositories;
 
