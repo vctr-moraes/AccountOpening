@@ -56,6 +56,7 @@ namespace AccountOpening.Infrastructure.Persistence.Repositories
         public void AddAddress(Address address)
         {
             _context.Addresses.Add(address);
+            _context.SaveChanges();
         }
 
         public void Dispose()

@@ -17,6 +17,7 @@ builder.Services.AddScoped<IClientRepository, ClientRepository>();
 builder.Services.AddScoped<IUseCase<RegisterClientRequestDto, RegisterClientResponseDto>, RegisteringClientUseCase>();
 builder.Services.AddScoped<IUseCase<GetClientByIdRequestDto, GetClientByIdResponseDto>, GetClientByIdUseCase>();
 builder.Services.AddScoped<IUseCase<GetClientsRequestDto, GetClientsResponseDto>, GetClientsUseCase>();
+builder.Services.AddScoped<IUseCase<RegisterAddressRequestDto, RegisterAddressResponseDto>, RegisteringAddressUseCase>();
 
 // Add services to the container.
 

@@ -1,6 +1,6 @@
 ﻿namespace AccountOpening.Core.Application.DTOs.Response;
 
-public record GetClientByIdResponseDto : Dto
+public sealed record GetClientByIdResponseDto : Dto
 {
     public Guid Id { get; init; }
     public string Name { get; init; }

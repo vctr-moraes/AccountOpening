@@ -63,5 +63,23 @@ namespace AccountOpening.API.Controllers
                 return BadRequest();
             }
         }
+
+        [HttpPost("register-address")]
+        [ProducesResponseType(200)]
+        [ProducesResponseType(400)]
+        public async Task<IActionResult> RegisterAddressAsync(
+            [FromServices] IUseCase<RegisterAddressRequestDto, RegisterAddressResponseDto> registerAddressUseCase,
+            [FromBody] RegisterAddressRequestDto registerAddressRequest)
+        {
+            try
+            {
+                await registerAddressUseCase.TryExecuteAsync(registerAddressRequest);
+                return Ok();
+            }
+            catch
+            {
+                return BadRequest();
+            }
+        }
     }
 }

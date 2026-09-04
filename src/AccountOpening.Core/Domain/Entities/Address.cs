@@ -5,6 +5,21 @@ namespace AccountOpening.Core.Domain.Entities
 {
     public class Address : Entity
     {
+        public Address() { }
+        
+        public Address(string city, string state, string zipCode, Client client)
+        {
+            Street = string.Empty;
+            City = city;
+            State = state;
+            ZipCode = zipCode;
+            Country = string.Empty;
+            AddressType = AddressType.Home;
+            Client = client;
+            ClientId = client.Id;
+            CreatedAt = DateTime.UtcNow;
+        }
+        
         public string Street { get; private set; }
         public string City { get; private set; }
         public string State { get; private set; }

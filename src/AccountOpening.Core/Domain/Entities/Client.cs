@@ -26,6 +26,11 @@ namespace AccountOpening.Core.Domain.Entities
             _accounts = new List<Account>();
             _addresses = new List<Address>();
         }
+        
+        internal void AssociateAddress(Address address)
+        {
+            _addresses.Append(address);
+        }
 
         internal void AssociateAccount(Account account)
         {
