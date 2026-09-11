@@ -51,6 +51,7 @@ namespace AccountOpening.Infrastructure.Persistence.Repositories
         public void AddAccount(Account account)
         {
             _context.Accounts.Add(account);
+            _context.SaveChanges();
         }
 
         public void AddAddress(Address address)

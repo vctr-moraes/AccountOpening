@@ -1,18 +1,29 @@
 ﻿using AccountOpening.Core.Application.DTOs.Request;
-using AccountOpening.Core.Application.Ports.DrivingPorts;
+using AccountOpening.Core.Application.DTOs.Response;
 using AccountOpening.Core.Domain.Entities;
+using AccountOpening.Core.Domain.Interfaces.Repositories;
 
-namespace AccountOpening.Core.Application.UseCases
+namespace AccountOpening.Core.Application.UseCases;
+
+public sealed class OpeningAccountUseCase(IClientRepository clientRepository) :
+    UseCase<OpenAccountRequestDto, OpenAccountResponseDto>
 {
-    internal class OpeningAccountUseCase : IOpeningAccountUseCase
+    protected override async Task<OpenAccountResponseDto> ExecuteAsync(OpenAccountRequestDto input)
     {
-        public async Task OpenAccount(OpenAccountRequestDto openAccountRequest)
+        var client = await clientRepository.GetById(input.ClientId);
+        
+        if (client is null)
         {
-            // Call repository to retrieve the client by ID.
-
-            var account = new Account(new Client(), openAccountRequest.ClientId);
-
-            // Call repository to save the account.
+            throw new Exception("Client not found");
         }
+        
+        var account = new Account(client, input.ClientId);
+        
+        client.AssociateAccount(account);
+        
+        clientRepository.Update(client);
+        clientRepository.AddAccount(account);
+
+        return new OpenAccountResponseDto();
     }
 }

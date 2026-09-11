@@ -17,6 +17,11 @@ namespace AccountOpening.Core.Domain.Entities
 
         internal Account(Client client, Guid clientId)
         {
+            if (client.Accounts.Any(c => c.AccountType == AccountType.Checking))
+            {
+                throw new Exception("Client already has a checking account");
+            }
+            
             AccountType = AccountType.Checking;
             AccountStatus = AccountStatus.OpeningRequested;
             RequestedAt = DateTime.Now;
