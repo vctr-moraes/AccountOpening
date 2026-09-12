@@ -64,21 +64,23 @@ namespace AccountOpening.API.Controllers
             }
         }
 
-        [HttpPost("register-address")]
+        [HttpPost("{clientId:guid}/address")]
         [ProducesResponseType(200)]
         [ProducesResponseType(400)]
         public async Task<IActionResult> RegisterAddressAsync(
             [FromServices] IUseCase<RegisterAddressRequestDto, RegisterAddressResponseDto> registerAddressUseCase,
+            [FromRoute] Guid clientId,
             [FromBody] RegisterAddressRequestDto registerAddressRequest)
         {
             try
             {
+                registerAddressRequest.ClientId = clientId;
                 await registerAddressUseCase.TryExecuteAsync(registerAddressRequest);
                 return Ok();
             }
-            catch
+            catch(Exception ex)
             {
-                return BadRequest();
+                return BadRequest(ex.Message);
             }
         }
     }

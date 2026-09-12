@@ -1,4 +1,5 @@
 ﻿using AccountOpening.Core.Domain.Common;
+using AccountOpening.Core.Domain.Enums;
 
 namespace AccountOpening.Core.Domain.Entities
 {
@@ -29,6 +30,11 @@ namespace AccountOpening.Core.Domain.Entities
         
         internal void AssociateAddress(Address address)
         {
+            if (Addresses.Any(a => a.AddressType == AddressType.Home))
+            {
+                throw new Exception("Client already has a home address");
+            }
+            
             _addresses.Append(address);
         }
 
