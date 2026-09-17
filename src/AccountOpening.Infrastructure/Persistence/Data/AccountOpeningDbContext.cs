@@ -10,4 +10,11 @@ public class AccountOpeningDbContext : DbContext
     public DbSet<Client> Clients { get; set; }
     public DbSet<Account> Accounts { get; set; }
     public DbSet<Address> Addresses { get; set; }
+    public DbSet<Agency> Agencies { get; set; }
+    
+    protected override void OnModelCreating(ModelBuilder builder)
+    {
+        builder.ApplyConfigurationsFromAssembly(typeof(AccountOpeningDbContext).Assembly);
+        base.OnModelCreating(builder);
+    }
 }

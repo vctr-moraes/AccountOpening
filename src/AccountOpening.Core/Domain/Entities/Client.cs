@@ -9,6 +9,9 @@ namespace AccountOpening.Core.Domain.Entities
         public DateTime DateOfBirth { get; private set; }
         public string Document { get; private set; }
         public bool IsActive { get; private set; }
+        
+        public Guid AgencyId { get; private set; }
+        public Agency Agency { get; private set; }
 
         private readonly IEnumerable<Account> _accounts;
         public IReadOnlyCollection<Account> Accounts => _accounts.ToList().AsReadOnly();
