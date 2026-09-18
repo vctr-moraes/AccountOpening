@@ -25,6 +25,14 @@ internal class ClientConfiguration : IEntityTypeConfiguration<Client>
             .Property(c => c.Document)
             .IsRequired()
             .HasMaxLength(50);
+        
+        builder
+            .Property(c => c.PhoneNumber)
+            .HasMaxLength(15);
+
+        builder
+            .Property(c => c.Email)
+            .HasMaxLength(100);
 
         builder
             .OwnsMany(c => c.Accounts, account =>
