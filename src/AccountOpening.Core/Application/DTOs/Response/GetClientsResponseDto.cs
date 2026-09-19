@@ -9,7 +9,7 @@ public sealed record ClientData : Dto
 {
     public Guid Id { get; init; }
     public string Name { get; init; } = string.Empty;
-    public DateTime DateOfBirth { get; init; }
+    public DateOnly DateOfBirth { get; init; }
     public string Document { get; init; } = string.Empty;
     public bool IsActive { get; init; }
 }

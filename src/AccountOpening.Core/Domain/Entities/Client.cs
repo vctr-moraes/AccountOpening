@@ -6,14 +6,14 @@ namespace AccountOpening.Core.Domain.Entities
     public class Client : Entity, IAggregateRoot
     {
         public string Name { get; private set; }
-        public DateTime DateOfBirth { get; private set; }
+        public DateOnly DateOfBirth { get; private set; }
         public string Document { get; private set; }
         public bool IsActive { get; private set; }
         public string PhoneNumber { get; private set; }
         public string Email { get; private set; }
         
-        public Guid AgencyId { get; private set; }
         public Agency Agency { get; private set; }
+        public Guid AgencyId { get; private set; }
 
         private readonly IEnumerable<Account> _accounts;
         public IReadOnlyCollection<Account> Accounts => _accounts.ToList().AsReadOnly();
@@ -23,12 +23,14 @@ namespace AccountOpening.Core.Domain.Entities
 
         public Client() { }
 
-        internal Client(string name, DateTime dateOfBirth, string document)
+        internal Client(string name, DateOnly dateOfBirth, string document, Agency agency)
         {
             Name = name;
             DateOfBirth = dateOfBirth;
             Document = document;
             IsActive = false;
+            Agency = agency;
+            AgencyId = agency.Id;
             _accounts = new List<Account>();
             _addresses = new List<Address>();
         }

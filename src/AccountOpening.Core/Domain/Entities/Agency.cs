@@ -6,16 +6,23 @@ public class Agency : Entity, IAggregateRoot
 {
     public int AgencyNumber { get; private set; }
     
-    private readonly IEnumerable<Client> _clients;
+    private IEnumerable<Client> _clients;
     public IReadOnlyCollection<Client> Clients => _clients.ToList().AsReadOnly();
     
     internal void AssociateClient(Client client)
     {
-        if (Clients.Any(c => c.Id == client.Id))
+        if (_clients?.Any(c => c.Id == client.Id) == true)
         {
             throw new Exception("Client already associated with this agency");
         }
         
-        _clients.Append(client);
+        if (_clients != null)
+        {
+            _clients.Append(client);
+        }
+        else
+        {
+            _clients = new List<Client> { client };
+        }
     }
 }

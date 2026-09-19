@@ -19,6 +19,7 @@ internal class ClientConfiguration : IEntityTypeConfiguration<Client>
         
         builder
             .Property(c => c.DateOfBirth)
+            .HasColumnType("date")
             .IsRequired();
         
         builder
@@ -28,10 +29,12 @@ internal class ClientConfiguration : IEntityTypeConfiguration<Client>
         
         builder
             .Property(c => c.PhoneNumber)
+            .IsRequired(false)
             .HasMaxLength(15);
 
         builder
             .Property(c => c.Email)
+            .IsRequired(false)
             .HasMaxLength(100);
 
         builder

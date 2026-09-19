@@ -3,7 +3,7 @@
     public sealed record RegisterClientRequestDto : Dto
     {
         public required string Name { get; init; }
-        public required DateTime DateOfBirth { get; init; }
+        public required DateOnly DateOfBirth { get; init; }
         public required string Document { get; init; }
     }
 }

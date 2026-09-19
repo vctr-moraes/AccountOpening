@@ -21,9 +21,9 @@ namespace AccountOpening.API.Controllers
                 var response = await registeringClientUseCase.TryExecuteAsync(registerClientRequest);
                 return Ok(response);
             }
-            catch
+            catch(Exception ex)
             {
-                return BadRequest();
+                return BadRequest(ex.InnerException?.Message ?? ex.Message);
             }
         }
     

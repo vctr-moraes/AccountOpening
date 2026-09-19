@@ -4,6 +4,7 @@ using AccountOpening.Infrastructure.Persistence.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AccountOpening.Infrastructure.Persistence.Migrations
 {
     [DbContext(typeof(AccountOpeningDbContext))]
-    partial class AccountOpeningDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260918001846_UpdateClientDateOfBirth")]
+    partial class UpdateClientDateOfBirth
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -55,6 +58,7 @@ namespace AccountOpening.Infrastructure.Persistence.Migrations
                         .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("Email")
+                        .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
@@ -67,6 +71,7 @@ namespace AccountOpening.Infrastructure.Persistence.Migrations
                         .HasColumnType("nvarchar(100)");
 
                     b.Property<string>("PhoneNumber")
+                        .IsRequired()
                         .HasMaxLength(15)
                         .HasColumnType("nvarchar(15)");
 
@@ -115,7 +120,7 @@ namespace AccountOpening.Infrastructure.Persistence.Migrations
 
                             b1.HasIndex("ClientId");
 
-                            b1.ToTable("Accounts", (string)null);
+                            b1.ToTable("Accounts");
 
                             b1.WithOwner("Client")
                                 .HasForeignKey("ClientId");
@@ -171,7 +176,7 @@ namespace AccountOpening.Infrastructure.Persistence.Migrations
 
                             b1.HasIndex("ClientId");
 
-                            b1.ToTable("Addresses", (string)null);
+                            b1.ToTable("Addresses");
 
                             b1.WithOwner("Client")
                                 .HasForeignKey("ClientId");

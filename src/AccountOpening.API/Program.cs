@@ -2,6 +2,7 @@ using AccountOpening.Core.Application.DTOs.Request;
 using AccountOpening.Core.Application.DTOs.Response;
 using AccountOpening.Core.Application.Ports.DrivingPorts;
 using AccountOpening.Core.Application.UseCases;
+using AccountOpening.Core.Domain.Entities;
 using AccountOpening.Core.Domain.Interfaces.Repositories;
 using AccountOpening.Infrastructure.Persistence.Data;
 using Microsoft.EntityFrameworkCore;
@@ -14,6 +15,7 @@ builder.Services.AddDbContext<AccountOpeningDbContext>(options =>
 
 builder.Services.AddScoped<AccountOpeningDbContext>();
 builder.Services.AddScoped<IClientRepository, ClientRepository>(); 
+builder.Services.AddScoped<IAgencyRepository, AgencyRepository>();
 builder.Services.AddScoped<IUseCase<RegisterClientRequestDto, RegisterClientResponseDto>, RegisteringClientUseCase>();
 builder.Services.AddScoped<IUseCase<GetClientByIdRequestDto, GetClientByIdResponseDto>, GetClientByIdUseCase>();
 builder.Services.AddScoped<IUseCase<GetClientsRequestDto, GetClientsResponseDto>, GetClientsUseCase>();
