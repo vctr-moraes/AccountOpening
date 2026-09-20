@@ -41,6 +41,7 @@ namespace AccountOpening.Infrastructure.Persistence.Repositories
         public void Update(Client client)
         {
             _context.Clients.Update(client);
+            _context.SaveChanges();
         }
 
         public void Delete(Client client)

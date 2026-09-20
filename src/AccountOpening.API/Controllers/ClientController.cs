@@ -26,6 +26,27 @@ namespace AccountOpening.API.Controllers
                 return BadRequest(ex.InnerException?.Message ?? ex.Message);
             }
         }
+
+        [HttpPatch("{clientId:guid}/contacts")]
+        [ProducesResponseType(200)]
+        [ProducesResponseType(400)]
+        public async Task<IActionResult> RegisterClientContactsAsync(
+            [FromServices] IUseCase<RegisterClientContactsRequestDto, RegisterClientContactsResponseDto> registeringClientContactsUseCase,
+            [FromRoute] Guid clientId,
+            [FromBody] RegisterClientContactsRequestDto registerClientContactsRequest)
+        {
+            try
+            {
+                registerClientContactsRequest.ClientId = clientId;
+                var response = await registeringClientContactsUseCase.TryExecuteAsync(registerClientContactsRequest);
+                
+                return Ok(response);
+            }
+            catch(Exception ex)
+            {
+                return BadRequest(ex.InnerException?.Message ?? ex.Message);
+            }
+        }
     
         [HttpGet("{clientId:guid}")]
         [ProducesResponseType(200)]

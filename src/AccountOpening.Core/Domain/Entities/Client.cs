@@ -35,6 +35,12 @@ namespace AccountOpening.Core.Domain.Entities
             _addresses = new List<Address>();
         }
         
+        internal void AssociateContacts(string phoneNumber, string email)
+        {
+            PhoneNumber = phoneNumber;
+            Email = email;
+        }
+        
         internal void AssociateAddress(Address address)
         {
             if (Addresses.Any(a => a.AddressType == AddressType.Home))
