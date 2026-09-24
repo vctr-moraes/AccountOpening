@@ -21,7 +21,6 @@ public sealed class RegisteringAddressUseCase(IClientRepository clientRepository
         
         client.AssociateAddress(address);
 
-        clientRepository.Update(client);
         clientRepository.AddAddress(address);
 
         return new RegisterAddressResponseDto();

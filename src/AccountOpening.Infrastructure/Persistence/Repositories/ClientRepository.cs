@@ -17,7 +17,6 @@ namespace AccountOpening.Infrastructure.Persistence.Repositories
         public async Task<Client?> GetById(Guid id)
         {
             return await _context.Clients
-                .AsNoTracking()
                 .Include(c => c.Addresses)
                 .Include(c => c.Accounts)
                 .FirstOrDefaultAsync(c => c.Id == id);

@@ -15,11 +15,11 @@ namespace AccountOpening.Core.Domain.Entities
         public Agency Agency { get; private set; }
         public Guid AgencyId { get; private set; }
 
-        private readonly IEnumerable<Account> _accounts;
-        public IReadOnlyCollection<Account> Accounts => _accounts.ToList().AsReadOnly();
+        private readonly List<Account> _accounts = new();
+        public IReadOnlyCollection<Account> Accounts => _accounts.AsReadOnly();
 
-        private readonly IEnumerable<Address> _addresses;
-        public IReadOnlyCollection<Address> Addresses => _addresses.ToList().AsReadOnly();
+        private readonly List<Address> _addresses = new();
+        public IReadOnlyCollection<Address> Addresses => _addresses.AsReadOnly();
 
         public Client() { }
 
@@ -31,8 +31,6 @@ namespace AccountOpening.Core.Domain.Entities
             IsActive = false;
             Agency = agency;
             AgencyId = agency.Id;
-            _accounts = new List<Account>();
-            _addresses = new List<Address>();
         }
         
         internal void AssociateContacts(string phoneNumber, string email)
@@ -48,12 +46,12 @@ namespace AccountOpening.Core.Domain.Entities
                 throw new Exception("Client already has a home address");
             }
             
-            _addresses.Append(address);
+            _addresses.Add(address);
         }
 
         internal void AssociateAccount(Account account)
         {
-            _accounts.Append(account);
+            _accounts.Add(account);
         }
     }
 }

@@ -21,7 +21,7 @@ namespace AccountOpening.API.Controllers
                 var response = await registeringClientUseCase.TryExecuteAsync(registerClientRequest);
                 return Ok(response);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return BadRequest(ex.InnerException?.Message ?? ex.Message);
             }
@@ -42,7 +42,7 @@ namespace AccountOpening.API.Controllers
                 
                 return Ok(response);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return BadRequest(ex.InnerException?.Message ?? ex.Message);
             }
@@ -99,7 +99,7 @@ namespace AccountOpening.API.Controllers
                 await registerAddressUseCase.TryExecuteAsync(registerAddressRequest);
                 return Ok();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return BadRequest(ex.Message);
             }
