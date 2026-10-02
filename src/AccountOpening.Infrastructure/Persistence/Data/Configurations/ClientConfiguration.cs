@@ -38,6 +38,12 @@ internal class ClientConfiguration : IEntityTypeConfiguration<Client>
             .HasMaxLength(100);
         
         builder
+            .HasOne(c => c.ApplicationMetadata)
+            .WithOne(am => am.Client)
+            .HasForeignKey<ApplicationMetadata>(am => am.ClientId)
+            .OnDelete(DeleteBehavior.Cascade);
+
+        builder
             .HasMany(c => c.Accounts)
             .WithOne(a => a.Client)
             .HasForeignKey(a => a.ClientId)

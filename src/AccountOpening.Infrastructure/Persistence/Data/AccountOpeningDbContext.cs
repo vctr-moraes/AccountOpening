@@ -11,6 +11,7 @@ public class AccountOpeningDbContext : DbContext
     public DbSet<Account> Accounts { get; set; }
     public DbSet<Address> Addresses { get; set; }
     public DbSet<Agency> Agencies { get; set; }
+    public DbSet<ApplicationMetadata> ApplicationMetadatas { get; set; }
     
     protected override void OnModelCreating(ModelBuilder builder)
     {

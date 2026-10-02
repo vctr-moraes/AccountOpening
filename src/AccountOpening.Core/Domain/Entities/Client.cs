@@ -11,6 +11,7 @@ namespace AccountOpening.Core.Domain.Entities
         public bool IsActive { get; private set; }
         public string PhoneNumber { get; private set; }
         public string Email { get; private set; }
+        public ApplicationMetadata ApplicationMetadata { get; private set; }
         
         public Agency Agency { get; private set; }
         public Guid AgencyId { get; private set; }
