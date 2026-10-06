@@ -46,6 +46,7 @@ namespace AccountOpening.Infrastructure.Persistence.Repositories
         public void Delete(Client client)
         {
             _context.Clients.Remove(client);
+            _context.SaveChanges();
         }
 
         public void AddAccount(Account account)
@@ -57,6 +58,12 @@ namespace AccountOpening.Infrastructure.Persistence.Repositories
         public void AddAddress(Address address)
         {
             _context.Addresses.Add(address);
+            _context.SaveChanges();
+        }
+
+        public void AddApplicationMetadata(ApplicationMetadata applicationMetadata)
+        {
+            _context.ApplicationMetadatas.Add(applicationMetadata);
             _context.SaveChanges();
         }
 

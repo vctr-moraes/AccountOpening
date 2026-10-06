@@ -49,6 +49,13 @@ namespace AccountOpening.Core.Domain.Entities
             
             _addresses.Add(address);
         }
+        
+        internal void AssociateApplicationMetadata(ApplicationMetadata applicationMetadata, Account account)
+        {
+            IsActive = true;
+            ApplicationMetadata = applicationMetadata;
+            account.Open();
+        }
 
         internal void AssociateAccount(Account account)
         {

@@ -12,6 +12,11 @@ public class AccountConfiguration : IEntityTypeConfiguration<Account>
         builder.HasKey(a => a.Id);
         
         builder
+            .Property(a => a.AccountNumber)
+            .IsRequired(false)
+            .HasMaxLength(8);
+        
+        builder
             .Property(a => a.RequestedAt)
             .HasColumnType("date");
         

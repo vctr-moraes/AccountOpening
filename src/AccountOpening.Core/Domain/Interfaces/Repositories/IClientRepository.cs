@@ -13,5 +13,7 @@ namespace AccountOpening.Core.Domain.Interfaces.Repositories
         void AddAccount(Account account);
 
         void AddAddress(Address address);
+        
+        void AddApplicationMetadata(ApplicationMetadata applicationMetadata);
     }
 }

@@ -6,6 +6,7 @@ namespace AccountOpening.Core.Domain.Entities
     public class Account : Entity
     {
         public AccountType AccountType { get; private set; }
+        public string AccountNumber { get; private set; }
         public AccountStatus AccountStatus { get; private set; }
         public DateTime RequestedAt { get; private set; }
         public DateTime OpenedAt { get; private set; }
@@ -33,6 +34,12 @@ namespace AccountOpening.Core.Domain.Entities
         {
             AccountStatus = AccountStatus.Open;
             OpenedAt = DateTime.Now;
+            AccountNumber = GenerateAccountNumber();
+        }
+
+        private string GenerateAccountNumber()
+        {
+            return new Random().Next(10000000, 99999999).ToString();
         }
     }
 }
