@@ -9,12 +9,7 @@ public class RegisteringClientContactsUseCase(IClientRepository clientRepository
 {
     protected override async Task<RegisterClientContactsResponseDto> ExecuteAsync(RegisterClientContactsRequestDto request)
     {
-        var client = await clientRepository.GetById(request.ClientId);
-
-        if (client is null)
-        {
-            throw new Exception("Client not found");
-        }
+        var client = await clientRepository.GetById(request.ClientId) ?? throw new Exception("Client not found");
 
         client.AssociateContacts(request.PhoneNumber, request.Email);
 

@@ -10,12 +10,7 @@ public sealed class OpeningAccountUseCase(IClientRepository clientRepository) :
 {
     protected override async Task<OpenAccountResponseDto> ExecuteAsync(OpenAccountRequestDto input)
     {
-        var client = await clientRepository.GetById(input.ClientId);
-        
-        if (client is null)
-        {
-            throw new Exception("Client not found");
-        }
+        var client = await clientRepository.GetById(input.ClientId) ?? throw new Exception("Client not found");
         
         var account = new Account(client, input.ClientId);
         

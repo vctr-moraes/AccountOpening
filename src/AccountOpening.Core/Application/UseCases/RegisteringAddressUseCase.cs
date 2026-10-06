@@ -10,12 +10,7 @@ public sealed class RegisteringAddressUseCase(IClientRepository clientRepository
 {
     protected override async Task<RegisterAddressResponseDto> ExecuteAsync(RegisterAddressRequestDto request)
     {
-        var client = await clientRepository.GetById(request.ClientId);
-
-        if (client is null)
-        {
-            throw new Exception("Client not found");
-        }
+        var client = await clientRepository.GetById(request.ClientId) ?? throw new Exception("Client not found");
 
         var address = new Address(request.City, request.State, request.ZipCode, client);
         

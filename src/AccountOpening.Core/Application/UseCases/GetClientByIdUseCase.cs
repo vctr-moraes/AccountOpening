@@ -8,12 +8,7 @@ public sealed class GetClientByIdUseCase(IClientRepository clientRepository) : U
 {
     protected override async Task<GetClientByIdResponseDto> ExecuteAsync(GetClientByIdRequestDto request)
     {
-        var client = await clientRepository.GetById(request.ClientId);
-
-        if (client is null)
-        {
-            throw new Exception("Client not found");
-        }
+        var client = await clientRepository.GetById(request.ClientId) ?? throw new Exception("Client not found");
 
         return new GetClientByIdResponseDto{
             Id = client.Id,
