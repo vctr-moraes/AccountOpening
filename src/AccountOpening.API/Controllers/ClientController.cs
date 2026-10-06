@@ -104,5 +104,26 @@ namespace AccountOpening.API.Controllers
                 return BadRequest(ex.Message);
             }
         }
+
+        [HttpPost("{clientId:guid}/application-metadata")]
+        [ProducesResponseType(200)]
+        [ProducesResponseType(400)]
+        public async Task<IActionResult> RegisterApplicationMetadataAsync(
+            [FromServices] IUseCase<RegisterApplicationMetadataRequestDto, OpenAccountResponseDto> registerApplicationMetadataUseCase,
+            [FromRoute] Guid clientId,
+            [FromBody] RegisterApplicationMetadataRequestDto registerApplicationMetadataRequest)
+        {
+            try
+            {
+                registerApplicationMetadataRequest.ClientId = clientId;
+                var response = await registerApplicationMetadataUseCase.TryExecuteAsync(registerApplicationMetadataRequest);
+                
+                return Ok(response);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.InnerException?.Message ?? ex.Message);
+            }
+        }
     }
 }

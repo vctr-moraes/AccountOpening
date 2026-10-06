@@ -21,7 +21,6 @@ public sealed class OpeningAccountUseCase(IClientRepository clientRepository) :
         
         client.AssociateAccount(account);
         
-        /*clientRepository.Update(client);*/
         clientRepository.AddAccount(account);
 
         return new OpenAccountResponseDto();
