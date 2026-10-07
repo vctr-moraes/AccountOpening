@@ -3,7 +3,7 @@
     public enum AccountStatus
     {
         OpeningRequested = 1,
-        Open = 2,
+        Opened = 2,
         Closed = 3
     }
 }

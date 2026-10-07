@@ -110,7 +110,7 @@ namespace AccountOpening.API.Controllers
         [ProducesResponseType(200)]
         [ProducesResponseType(400)]
         public async Task<IActionResult> RegisterApplicationMetadataAsync(
-            [FromServices] IUseCase<RegisterApplicationMetadataRequestDto, OpenAccountResponseDto> registerApplicationMetadataUseCase,
+            [FromServices] IUseCase<RegisterApplicationMetadataRequestDto, RegisterApplicationMetadataResponseDto> registerApplicationMetadataUseCase,
             [FromRoute] Guid clientId,
             [FromBody] RegisterApplicationMetadataRequestDto registerApplicationMetadataRequest)
         {

@@ -18,13 +18,17 @@ namespace AccountOpening.Core.Application.UseCases
                 registerClientRequest.Document,
                 agency);
             
+            var account = new Account(client, client.Id);
+            
             agency.AssociateClient(client);
+            
+            client.AssociateAccount(account);
 
             clientRepository.Add(client);
 
             return new RegisterClientResponseDto
             {
-                Greetings = $"Hello {client.Name}, your account has been successfully created!"
+                Greetings = $"Hello {client.Name}, your account {account.AccountType} has been successfully created!"
             };
         }
     }

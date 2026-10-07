@@ -32,7 +32,7 @@ namespace AccountOpening.Core.Domain.Entities
 
         internal void Open()
         {
-            AccountStatus = AccountStatus.Open;
+            AccountStatus = AccountStatus.Opened;
             OpenedAt = DateTime.Now;
             AccountNumber = GenerateAccountNumber();
         }
